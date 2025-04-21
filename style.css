@@ -409,6 +409,28 @@ section:nth-child(even) {
     margin-top: 40px;
 }
 
+/* Responsive grid adjustments */
+@media (max-width: 992px) {
+    .vehicle-cards {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .vehicle-cards {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .vehicle-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
 .vehicle-card {
     background-color: var(--card-bg);
     border-radius: 10px;
@@ -416,6 +438,7 @@ section:nth-child(even) {
     box-shadow: var(--shadow);
     transition: var(--transition);
     border: 1px solid var(--border-color);
+    width: 100%;
 }
 
 .vehicle-card:hover {
@@ -426,6 +449,12 @@ section:nth-child(even) {
 .vehicle-image {
     height: 180px;
     overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .vehicle-image {
+        height: 160px;
+    }
 }
 
 .vehicle-image img {
@@ -443,14 +472,30 @@ section:nth-child(even) {
     padding: 20px;
 }
 
+@media (max-width: 768px) {
+    .vehicle-details {
+        padding: 15px;
+    }
+}
+
 .vehicle-features {
     list-style: none;
     margin-bottom: 20px;
+    padding-left: 0;
+    /* Ensures consistent padding across browsers */
 }
 
 .vehicle-features li {
     margin-bottom: 8px;
     color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .vehicle-features li {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+    }
 }
 
 .vehicle-features li i {
@@ -463,6 +508,8 @@ section:nth-child(even) {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap;
+    /* Allows wrapping on very small screens */
 }
 
 .price {
@@ -471,11 +518,22 @@ section:nth-child(even) {
     color: var(--primary-color);
 }
 
+@media (max-width: 768px) {
+    .price {
+        font-size: 1.1rem;
+    }
+}
+
 .min-fare {
     font-size: 0.9rem;
     color: var(--text-light);
 }
 
+@media (max-width: 768px) {
+    .min-fare {
+        font-size: 0.85rem;
+    }
+}
 /* Booking Section */
 .booking-form {
     background-color: var(--card-bg);
