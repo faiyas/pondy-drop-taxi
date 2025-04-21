@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pondy DropTaxi - Premium Taxi Service in Pondicherry</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Add this for form validation styling -->
+    <link rel="stylesheet" href="form-validation.css" />
+    <script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyB5JPcdPu6ya3526m1Wb89WoakE9s5csF4 &libraries=places"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1>Pondy <span>DropTaxi</span></h1>
+        </div>
+        <nav>
+          <ul class="menu">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#tariff">Tariff</a></li>
+            <li><a href="#booking">Book Now</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Premium Taxi Service in Pondicherry</h1>
+          <p>
+            Safe, reliable, and affordable transportation with Pondy DropTaxi.
+            Your journey, our priority!
+          </p>
+          <a href="#booking" class="btn btn-primary">Book a Taxi</a>
+          <a href="#tariff" class="btn btn-secondary">Check Tariff</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Premium Services</h2>
+          <p>
+            Experience the finest transportation services in Pondicherry with
+            our exceptional fleet and professional drivers
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-taxi"></i>
+            </div>
+            <h3>Local Taxi Service</h3>
+            <p>
+              Explore Pondicherry's beautiful streets and attractions with our
+              punctual local taxi service.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-plane-departure"></i>
+            </div>
+            <h3>Airport Transfer</h3>
+            <p>
+              Stress-free premium transfers to and from Chennai Airport with
+              fixed rates and on-time service.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-route"></i>
+            </div>
+            <h3>Outstation Trips</h3>
+            <p>
+              Comfortable and safe journeys to Chennai, Mahabalipuram, Thanjavur
+              and other destinations.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-car"></i>
+            </div>
+            <h3>Car Rental</h3>
+            <p>
+              Flexible car rentals with experienced drivers for your daily
+              travel needs.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-suitcase-rolling"></i>
+            </div>
+            <h3>Pondicherry Tours</h3>
+            <p>
+              Discover the French Quarter, Auroville, and local attractions with
+              our curated tours.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Group Travel</h3>
+            <p>
+              Specialized vehicles for family trips, corporate outings, and
+              group excursions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tariff Section -->
+    <section id="tariff" class="tariff">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tariff Calculator</h2>
+          <p>
+            Get instant fare estimates for your journey with our transparent
+            pricing
+          </p>
+        </div>
+        <div class="tariff-calculator">
+          <div class="calculator-form">
+            <div class="form-group">
+              <label for="pickup-location">Pickup Location</label>
+              <input
+                type="text"
+                id="pickup-location"
+                placeholder="Enter pickup location"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="drop-location">Drop Location</label>
+              <input
+                type="text"
+                id="drop-location"
+                placeholder="Enter drop location"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="vehicle-type">Vehicle Type</label>
+              <select id="vehicle-type" required>
+                <option value="">Select Vehicle Type</option>
+                <option value="sedan" data-rate="12">
+                  Sedan (4 Seater) - ₹12/km
+                </option>
+                <option value="suv" data-rate="16">
+                  SUV (6 Seater) - ₹16/km
+                </option>
+                <option value="tempo" data-rate="22">
+                  Tempo Traveller (12 Seater) - ₹22/km
+                </option>
+                <option value="bus" data-rate="35">
+                  Mini Bus (20 Seater) - ₹35/km
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="journey-type">Journey Type</label>
+              <select id="journey-type" required>
+                <option value="one_way">One Way</option>
+                <option value="round_trip">Round Trip</option>
+              </select>
+            </div>
+            <button id="calculate-fare" class="btn btn-primary">
+              Calculate Fare
+            </button>
+          </div>
+          <div id="map" style="height: 300px; margin: 20px 0"></div>
+        </div>
+        <div class="fare-display">
+          <div class="fare-result">
+            <h3>Estimated Fare</h3>
+            <div id="fare-amount">₹ 0.00</div>
+            <div id="fare-details">
+              <p>Base Fare: <span id="base-fare">₹ 0.00</span></p>
+              <p>Distance: <span id="distance">0 km</span></p>
+              <p>GST (5%): <span id="tax-amount">₹ 0.00</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="tariff-notes">
+          <h3>Important Notes:</h3>
+          <ul>
+            <li>All prices include fuel and driver charges.</li>
+            <li>
+              Toll charges, parking fees, and state entry taxes are extra.
+            </li>
+            <li>
+              Night charges (10 PM to 6 AM) may apply as per government
+              regulations.
+            </li>
+            <li>
+              Waiting charges will be applicable after the first 30 minutes.
+            </li>
+            <li>
+              Special discounts available for regular customers and long
+              journeys.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Vehicle Fleet Section (to be added within the Tariff Section) -->
+      <div class="vehicle-fleet">
+        <div class="section-title">
+          <h2>Our Fleet</h2>
+          <p>
+            Choose from our range of well-maintained vehicles for your journey
+          </p>
+        </div>
+
+        <div class="vehicle-cards">
+          <!-- Sedan Vehicle Card -->
+          <div class="vehicle-card">
+            <div class="vehicle-image">
+              <img src="/suv.jpg" alt="Sedan Car" />
+            </div>
+            <div class="vehicle-details">
+              <h3>Sedan</h3>
+              <ul class="vehicle-features">
+                <li><i class="fas fa-user"></i> 4 Passengers</li>
+                <li><i class="fas fa-suitcase"></i> 2 Luggage</li>
+                <li><i class="fas fa-snowflake"></i> Air Conditioned</li>
+              </ul>
+              <div class="vehicle-pricing">
+                <p class="price"><i class="fas fa-rupee-sign"></i> 12/km</p>
+                <p class="min-fare">
+                  Min Fare: <i class="fas fa-rupee-sign"></i> 300
+                </p>
+              </div>
+              <a href="#booking" class="btn btn-sm">Book Now</a>
+            </div>
+          </div>
+
+          <!-- SUV Vehicle Card -->
+          <div class="vehicle-card">
+            <div class="vehicle-image">
+              <img src="/sedan.jpg" alt="SUV Car" />
+            </div>
+            <div class="vehicle-details">
+              <h3>SUV</h3>
+              <ul class="vehicle-features">
+                <li><i class="fas fa-user"></i> 6 Passengers</li>
+                <li><i class="fas fa-suitcase"></i> 4 Luggage</li>
+                <li><i class="fas fa-snowflake"></i> Air Conditioned</li>
+              </ul>
+              <div class="vehicle-pricing">
+                <p class="price"><i class="fas fa-rupee-sign"></i> 16/km</p>
+                <p class="min-fare">
+                  Min Fare: <i class="fas fa-rupee-sign"></i> 500
+                </p>
+              </div>
+              <a href="#booking" class="btn btn-sm">Book Now</a>
+            </div>
+          </div>
+
+          <!-- Tempo Traveller Vehicle Card -->
+          <div class="vehicle-card">
+            <div class="vehicle-image">
+              <img src="/tt.jpg" alt="Tempo Traveller" />
+            </div>
+            <div class="vehicle-details">
+              <h3>Tempo Traveller</h3>
+              <ul class="vehicle-features">
+                <li><i class="fas fa-user"></i> 12 Passengers</li>
+                <li><i class="fas fa-suitcase"></i> 10 Luggage</li>
+                <li><i class="fas fa-snowflake"></i> Air Conditioned</li>
+              </ul>
+              <div class="vehicle-pricing">
+                <p class="price"><i class="fas fa-rupee-sign"></i> 22/km</p>
+                <p class="min-fare">
+                  Min Fare: <i class="fas fa-rupee-sign"></i> 1200
+                </p>
+              </div>
+              <a href="#booking" class="btn btn-sm">Book Now</a>
+            </div>
+          </div>
+
+          <!-- Mini Bus Vehicle Card -->
+          <div class="vehicle-card">
+            <div class="vehicle-image">
+              <img src="/pngwing.com (4).png" alt="Mini Bus" />
+            </div>
+            <div class="vehicle-details">
+              <h3>Mini Bus</h3>
+              <ul class="vehicle-features">
+                <li><i class="fas fa-user"></i> 20 Passengers</li>
+                <li><i class="fas fa-suitcase"></i> 15 Luggage</li>
+                <li><i class="fas fa-snowflake"></i> Air Conditioned</li>
+              </ul>
+              <div class="vehicle-pricing">
+                <p class="price"><i class="fas fa-rupee-sign"></i> 35/km</p>
+                <p class="min-fare">
+                  Min Fare: <i class="fas fa-rupee-sign"></i> 2000
+                </p>
+              </div>
+              <a href="#booking" class="btn btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+      <div class="container">
+        <div class="section-title">
+          <h2>Book Your Taxi</h2>
+          <p>
+            Quick and easy booking process - Your comfort journey begins here
+          </p>
+        </div>
+        <form
+          id="booking-form"
+          class="booking-form"
+          action="https://formsubmit.co/mohamedfaiyas11@gmail.com"
+          method="POST"
+        >
+          <div class="form-row">
+            <div class="form-group">
+              <label for="customer-name">Your Name</label>
+              <input type="text" id="customer-name" required />
+            </div>
+            <div class="form-group">
+              <label for="customer-phone">Phone Number</label>
+              <input type="tel" id="customer-phone" required />
+            </div>
+            <input type="hidden" name="_next" value="/index.html" />
+          </div>
+          <div class="form-row" style="display: none">
+            <div class="form-group full-width">
+              <input
+                type="hidden"
+                id="owner-email"
+                value="mohamedfaiyas11@gmail.com"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="customer-email">Email Address</label>
+              <input type="email" id="customer-email" required />
+            </div>
+            <div class="form-group">
+              <label for="booking-date">Pickup Date</label>
+              <input type="date" id="booking-date" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pickup-time">Pickup Time</label>
+              <input type="time" id="pickup-time" required />
+            </div>
+            <div class="form-group">
+              <label for="booking-pickup">Pickup Location</label>
+              <select id="booking-pickup" required>
+                <option value="">Select Pickup Location</option>
+                <option value="pondicherry">Pondicherry</option>
+                <option value="auroville">Auroville</option>
+                <option value="chennai_airport">Chennai Airport</option>
+                <option value="chennai_city">Chennai City</option>
+                <option value="kottakuppam">Kottakuppam</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="booking-drop">Drop Location</label>
+              <select id="booking-drop" required>
+                <option value="">Select Drop Location</option>
+                <option value="pondicherry">Pondicherry</option>
+                <option value="auroville">Auroville</option>
+                <option value="chennai_airport">Chennai Airport</option>
+                <option value="chennai_city">Chennai City</option>
+                <option value="mahabalipuram">Mahabalipuram</option>
+                <option value="thanjavur">Thanjavur</option>
+                <option value="kottakuppam">Kottakuppam</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="booking-vehicle">Vehicle Type</label>
+              <select id="booking-vehicle" required>
+                <option value="">Select Vehicle Type</option>
+                <option value="sedan">Sedan (4 Seater)</option>
+                <option value="suv">SUV (6 Seater)</option>
+                <option value="tempo">Tempo Traveller (12 Seater)</option>
+                <option value="bus">Mini Bus (20 Seater)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="special-instructions"
+                >Special Instructions (Optional)</label
+              >
+              <textarea id="special-instructions" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full-width">
+              <button type="submit" class="btn btn-primary" id="booking-submit">
+                <span id="booking-submit-text">Book Now</span>
+                <span
+                  id="booking-spinner"
+                  class="loading-spinner"
+                  style="display: none"
+                ></span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Pondy DropTaxi</h2>
+          <p>Your premium travel partner in Pondicherry</p>
+        </div>
+        <div class="about-content">
+          <div class="about-image">
+            <img src="/abt.jpg" alt="Pondy DropTaxi Fleet" />
+          </div>
+          <div class="about-text">
+            <h3>Who We Are</h3>
+            <p>
+              Pondy DropTaxi is Pondicherry's premier taxi service, dedicated to
+              providing exceptional transportation experiences. We take pride in
+              our meticulously maintained vehicles and professionally trained
+              drivers who prioritize your comfort and safety above all.
+            </p>
+            <h3>Our Promise</h3>
+            <p>
+              We promise punctuality, transparency, comfort, and personalized
+              service for every journey. Whether you're a tourist exploring the
+              beautiful streets of Pondicherry or a local needing reliable
+              transportation, we're here to exceed your expectations.
+            </p>
+            <h3>Why Choose Pondy DropTaxi?</h3>
+            <ul>
+              <li>
+                Experienced, courteous drivers with excellent local knowledge
+              </li>
+              <li>Immaculately maintained, air-conditioned vehicles</li>
+              <li>24/7 availability - we're always there when you need us</li>
+              <li>Transparent pricing with no hidden charges</li>
+              <li>
+                Flexible booking options - book minutes or months in advance
+              </li>
+              <li>Special packages for regular travelers and tourists</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact Us</h2>
+          <p>Reach out to us anytime - we're available 24/7</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Address</h3>
+                <p>24/52, Haji Hussain Street, Kottakuppam, Pondicherry</p>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Phone</h3>
+                <p>+91 90252 32453</p>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Email</h3>
+                <p>mohamedfaiyas11@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Working Hours</h3>
+                <p>24/7 - We're always available for your service</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-container">
+          <form
+            id="contact-form"
+            class="contact-form"
+            action="https://formsubmit.co/mohamedfaiyas11@gmail.com"
+            method="POST"
+          >
+            <div class="form-group">
+              <label for="contact-name">Your Name</label>
+              <input type="text" id="contact-name" required />
+            </div>
+            <div style="display: none">
+              <input
+                type="hidden"
+                id="contact-owner-email"
+                value="mohamedfaiyas11@gmail.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="contact-submit">
+              <span id="contact-submit-text">Send Message</span>
+              <span
+                id="contact-spinner"
+                class="loading-spinner"
+                style="display: none"
+              ></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <h3>Pondy DropTaxi</h3>
+            <p>
+              Your premium transportation partner in Pondicherry. We provide
+              reliable, comfortable, and affordable taxi services for all your
+              travel needs, 24/7.
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#tariff">Tariff</a></li>
+              <li><a href="#booking">Book Now</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> 24/52, Haji Hussain Street,
+              Kottakuppam, Pondicherry
+            </p>
+            <p><i class="fas fa-phone"></i> +91 90252 32453</p>
+            <p><i class="fas fa-envelope"></i> mohamedfaiyas11@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Pondy DropTaxi. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Booking Confirmation Modal -->
+    <div id="booking-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+          <h2>Booking Confirmation</h2>
+        </div>
+        <div class="modal-body">
+          <p>Your booking has been received successfully!</p>
+          <div class="booking-details">
+            <h3>Booking Details:</h3>
+            <p>
+              <strong>Booking ID:</strong> <span id="modal-booking-id"></span>
+            </p>
+            <p><strong>Name:</strong> <span id="modal-name"></span></p>
+            <p><strong>Phone:</strong> <span id="modal-phone"></span></p>
+            <p><strong>Pickup Date:</strong> <span id="modal-date"></span></p>
+            <p><strong>Pickup Time:</strong> <span id="modal-time"></span></p>
+            <p><strong>Route:</strong> <span id="modal-route"></span></p>
+            <p><strong>Vehicle:</strong> <span id="modal-vehicle"></span></p>
+            <p>
+              <strong>Estimated Fare:</strong> <span id="modal-fare"></span>
+            </p>
+          </div>
+          <div class="booking-confirmation">
+            <p>
+              A confirmation message has been sent to your phone and email. We
+              will contact you shortly to confirm your booking details.
+            </p>
+            <p>For any assistance, please call us at +91 90252 32453.</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="close-booking-modal" class="btn btn-primary">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="theme-toggle" id="theme-toggle">
+      <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>
